@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siBaper - HomePage</title>
+    <link rel="stylesheet" href="style/home.css">
+
+    <link rel="icon" type="image" href="assets/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/elipse.svg" alt="">
+                <h4>siBaper</h4>
+            </div>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Histori</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="banner">
+            <img src="assets/polnep.jpg" alt="">
+            <div class="shadow">
+                
+            </div>
+            <div class="greetings">
+                <h1>Selamat Datang, <b>Username!</b></h1>
+                <h3>12 Oktober 2024</h3>
+            </div>
+        </section>
+        <section class="section-info">
+            <div class="text-info">
+                <h1>Informasi Mengajar:</h1>
+                <p>
+                    Anda Hari ini memiliki kelas mengajar pada kelas A dan Kelas D. <br>
+                    silahkan mengisi berita perkuliahan pada kelas yang tersedia
+                </p>
+            </div>
+
+            <img src="assets/icon.png" alt="">
+        </section>
+        <section class="section-task">
+            <h1>Daftar Kelas:</h1>
+
+            <div class="card-list">
+                <div class="card">
+                    <div class="card-info">
+                        <p>Kelas A</p>
+                        <p>Pemrograman web</p>
+                        <p>07.00 - 09.00</p>
+                    </div>
+
+                    <button onclick="window.location.href='formpage.html'">isi kelas</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <p>Kelas B</p>
+                        <p>Jaringan Komputer</p>
+                        <p>09.00 - 12.30</p>
+                    </div>
+
+                    <button onclick="window.location.href='formpage.html'">isi kelas</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <p>Kelas C</p>
+                        <p>Pemrograman web</p>
+                        <p>13.30 - 15.30</p>
+                    </div>
+
+                    <button onclick="window.location.href='formpage.html'">isi kelas</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>@2024 siBaper</p>
+    </footer>
+</body>
+</html>

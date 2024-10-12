@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image" href="assets/icon.png">
+
+    <title>Sibaper - FormPage</title>
+    <link rel="stylesheet" href="style/form.css">
+</head>
+<body>
+    <main>
+        <div class="header">
+
+            <svg onclick="window.location.href='homepage.html'" class="back" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+            </svg>
+
+            <div class="nav-title">
+                <h1>Isi Berita Perkuliahan</h1>
+            </div>
+        </div>
+        <div class="maincontainer">
+            <div class="info">
+                <p>27 September 2024</p><br>
+                <p>Pertemuan ke -1</p><br>
+                <p>Kelas C</p>
+            </div>
+
+            <div class="container1">
+                <label for="pokokBahasan"></label>
+                <select id="pokokBahasan" name="pokok-bahasan" required>
+                    <option value="" disabled selected hidden>Pokok Bahasan</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option4">Option 4</option>
+                    <option value="option5">Option 5</option>
+                    <option value="option6">Option 6</option>
+                </select>
+                <br><br>
+                <div class="textareacontent">
+                    <textarea name="subPokokBahasan" id="subPokokBahasan" cols="30" rows="10" placeholder="Sub Pokok Bahasan" required></textarea>
+                </div>
+                <br>
+                <label for="mediaAjar"></label>
+                <select id="mediaAjar" name="media-ajar" required>
+                    <option value="" disabled selected hidden>Media Ajar</option>
+                    <option value="media1">Power Point</option>
+                    <option value="media2">Option 2</option>
+                    <option value="media3">Option 3</option>
+                </select>
+                <br>
+                <br>
+                <label for="status"></label>
+                <select id="status" name="status" required>
+                    <option value="" disabled selected hidden>Status</option>
+                    <option value="media1">OnProgress</option>
+                    <option value="media2">Completed</option>
+                </select>
+                <br>
+                <br>
+                <div class="submit">
+                    <button id="submitBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="header2">
+                <p>@2024 siBaper</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Menyembunyikan opsi pertama saat dipilih
+        document.getElementById('pokokBahasan').addEventListener('change', function() {
+            if (this.value === "") {
+                this.options[0].style.display = 'none'; // Sembunyikan opsi pertama
+            }
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const subPokokBahasan = document.getElementById('subPokokBahasan').value;
+            const pokokBahasan = document.getElementById('pokokBahasan').value;
+            const mediaAjar = document.getElementById('mediaAjar').value;
+
+            alert(`Sub Pokok Bahasan: ${subPokokBahasan}\nPokok Bahasan: ${pokokBahasan}\nMedia Ajar: ${mediaAjar}`);
+        });
+    </script>
+</body>
+</html>
