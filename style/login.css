@@ -90,7 +90,7 @@ header > img {
     margin-bottom: 5px;
 }
 
-button {
+form > button {
     margin-top: 40px;
     border: none;
     padding: 18px 35px;
@@ -99,6 +99,7 @@ button {
     font-size: 22px;
     color: white;
     background-color: #334EAC;
+    width: 100%;
 }
 
 button:hover {
@@ -106,7 +107,7 @@ button:hover {
     background-color: #1c2f75;
 }
 
-@media (max-width: 1533px) {
+@media (max-width: 1393px) {
     main {
         display: flex;
         flex-direction: column;

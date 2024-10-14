@@ -11,10 +11,11 @@ header {
     inset-inline-start: 0;
     z-index: 100;
     color: white;
+    top: 0;
 }
 
 main {
-    margin-bottom: 150px;
+    margin: 200px 0;
 }
 
 nav {
@@ -61,63 +62,6 @@ nav > .logo > h4 {
     font-size: 20px;
     letter-spacing: 1px;
 
-}
-
-.banner {
-    width: 100%;
-    height: 70vh;
-    overflow: hidden;
-}
-
-.banner > img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: relative;
-    object-fit: cover;
-    object-position: center;
-}
-
-.shadow {
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    height: 70vh;
-    opacity: 0.6;
-    top: 0;
-}
-
-.greetings {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    padding: 0 10%;
-    gap: 3%;
-}
-
-.greetings h1,  h3 {
-    margin: 0;
-    letter-spacing: 1px;
-}
-
-.greetings > h1 {
-    font-weight: 400;
-    font-size: 38px;
-}
-
-.greetings > h1 > b {
-    font-weight: 600;
-}
-
-.greetings > h3 {
-    font-weight: 400;
-    font-size: 24px;
 }
 
 .section-info {
@@ -209,7 +153,7 @@ footer {
     color: rgb(160, 160, 160);
 }
 
-@media (max-width: 1393px) {
+@media (max-width: 1533px) {
     .banner {
         height: 35vh;
     }
@@ -232,13 +176,7 @@ footer {
     }
 
     .card {
-        gap: 10vh;
-    }
-
-
-    .card-info > p {
-        
-        white-space: nowrap;
+        gap: 20vh;
     }
 }
 
@@ -303,14 +241,12 @@ footer {
         font-weight: 500;
         letter-spacing: 1px;
     }
-
     .card-info > p {
-        font-size: 8px;
-        white-space: nowrap;
+        font-size: 10px;
     }
 
     .card > button {
-        font-size: 8px;
+        font-size: 10px;
         border-radius: 6px;
     }
 }
