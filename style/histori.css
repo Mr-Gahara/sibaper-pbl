@@ -189,64 +189,32 @@ footer {
     color: rgb(160, 160, 160);
 }
 
-@media (max-width: 1533px) {
-    .banner {
-        height: 35vh;
-    }
-    
-    .banner > img {
-        height: 100%;
-    }
-    
-    .shadow {
-        height: 35vh;
-    }
-
-    .greetings {
-        height: 35vh;
-    }
-
-    .section-info > img {
-        width: 140px;
-        height: 140px;
-    }
-
-    .card {
+@media (max-width: 1533px) {    
+    .info {
         gap: 20vh;
+    }
+
+    table, th, td {
+        font-size: 12.5px;
+    }
+
+    .section-info {
+        margin: 7% 7%;
+    }
+
+    .section-task {
+        margin: 7% 7%;
     }
 }
 
 @media (max-width: 823px) {
-    .banner {
-        height: 30vh;
-    }
-    
-    .banner > img {
-        height: 100%;
-    }
-    
-    .shadow {
-        height: 30vh;
-    }
-
-    .greetings {
-        height: 35vh;
-    }
-
-    .greetings > h1 {
-        font-size: 15px;
-    }
-
-    .greetings > h3 {
-        font-size: 12px;
-    }
-
     .section-info {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        margin: 7% 10%;
+        margin: 7% 7%;
         gap: 5vh;
+    }
+
+    .section-task {
+        margin: 7% 7%;
     }
 
     .text-info > h1 {
@@ -262,28 +230,33 @@ footer {
         height: 70px;
     }
 
-    .card {
-        gap: 5vh;
-        border-radius: 6px;
+    .info {
+        gap: 0vh;
+        flex-direction: column;
+    }
+
+    .filter {
+        flex-direction: column;
+        gap: 0.5vh;
+    }
+    
+    .filter > select {
         padding: 3%;
+        border-style: none;
+        background-color: #1c2f75;
+        color: white;
+        border-radius: 5px;
+        width: 100%;
+        
     }
 
-    .section-task {
-        margin: 7% 10%;
+    table {
+        border-radius: 5px;
+
     }
 
-    .section-task > h1 {
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 1px;
-    }
-    .card-info > p {
-        font-size: 10px;
-    }
-
-    .card > button {
-        font-size: 10px;
-        border-radius: 6px;
+    table, th, td {
+        font-size: 5.5px;
     }
 }
 
