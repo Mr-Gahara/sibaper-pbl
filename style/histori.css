@@ -64,6 +64,79 @@ nav > .logo > h4 {
 
 }
 
+.info {
+    display: flex;
+    width: 100%;
+    gap: 70vh;
+    margin: 5vh 0;
+}
+
+.tahun-ajar {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.tahun-ajar > h4 {
+    white-space: nowrap;
+}
+
+.filter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter > select {
+    padding: 3%;
+    border-style: none;
+    background-color: #1c2f75;
+    color: white;
+    border-radius: 5px;
+    appearance: none;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+}
+
+.filter > select:hover {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: bisque;
+}
+
+th {
+    font-weight: 500;
+    
+}
+
+table, th, td {
+    border-top: 2px solid white;
+    padding: 1%;
+}
+
+table > thead {
+    background-color: #334EAC;
+    color: white;
+}
+
+table tbody {
+    background-color: rgb(214, 214, 214);
+}
+
+.column-status {
+    background-color: #14A44D;
+    color: white;
+    
+}
+
 .section-info {
     display: flex;
     justify-content: space-between;

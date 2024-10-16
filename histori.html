@@ -39,9 +39,78 @@
             <img src="assets/icon.png" alt="">
         </section>
         <section class="section-task">
-            <h1>Daftar Kelas:</h1>
 
-            <div class="card-list">
+            <div class="info">
+                <div class="tahun-ajar">
+                    <h4>tahun ajar: </h4>
+                    <p>2024/2025</p>
+                </div>
+                <div class="filter">
+                    <select name="filter semester" id="">
+                        <option value="" disabled selected hidden>filter semester <p>▼</p></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <select name="filter kelas" id="">
+                        <option value="" disabled selected hidden>filter kelas <p>▼</p></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
+                    <select name="filter dosen" id="">
+                        <option value="" disabled selected hidden>filter dosen <p>▼</p></option>
+                        <option value="A">Safri Adam</option>
+                        <option value="B">Bang fey</option>
+                    </select>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pertemuan</th>
+                        <th>Tanggal</th>
+                        <th>Mata kuliah</th>
+                        <th>Pokok Bahasan</th>
+                        <th>Sub Pokok Bahasan</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>11/10/2024</td>
+                        <td>Pemrograman Web</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td class="column-status">OnProcess</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>11/10/2024</td>
+                        <td>Pemrograman Web</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td class="column-status">Completed</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>11/10/2024</td>
+                        <td>Pemrograman Web</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td>Politeknik Negeri Pontianak</td>
+                        <td class="column-status">OnProcess</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <div class="card-list">
                 <div class="card">
                     <div class="card-info">
                         <p>Kelas A</p>
@@ -71,7 +140,7 @@
 
                     <button onclick="window.location.href='formpage.html'">isi kelas</button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer>
