@@ -65,6 +65,15 @@ nav > .logo > h4 {
 
 }
 
+svg {
+    color: white;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
 .info {
     display: flex;
     width: 100%;
@@ -257,6 +266,41 @@ footer {
 
     table, th, td {
         font-size: 5.5px;
+    }
+
+    svg {
+        color: white;
+        display: block;
+    }
+
+    ul {
+        position: fixed;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        background-color: #283976;
+        height: 100vh;
+        top: 8.8vh;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        right: -100%;
+        transition: all .5s;
+    }
+
+    nav > ul > li {
+        display: block;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    header {
+        padding: 0 3%;
+
+    }
+    
+    #check:checked ~ ul {
+        right: 0;
     }
 }
 
