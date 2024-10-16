@@ -38,6 +38,7 @@ a {
     font-weight: 600;
     font-size: 20px;
 }
+
 ul {
     display: flex;
     width: 100%;
@@ -120,6 +121,7 @@ th {
 table, th, td {
     border-top: 2px solid white;
     padding: 1%;
+    text-align: left;
 }
 
 table > thead {
@@ -172,45 +174,6 @@ table tbody {
 
 .section-task > h1 {
     margin: 5% 0;
-}
-
-.card {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 50vh;
-    margin: 3% 0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2%;
-    border-radius: 15px;
-}
-
-.card:hover {
-    background-color: rgb(247, 247, 247);
-    cursor: pointer;
-}
-
-.card-info {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    align-self: flex-start;
-}
-
-.card > button {
-    padding: 0 2.5%;
-    border-style: none;
-    background-color: #334EAC;
-    border-radius: 12px;
-    color: white;
-    font-weight: 600;
-    white-space: nowrap;
-    font-size: 16px;
-}
-
-.card > button:hover {
-    cursor: pointer;
-    background-color: #1c2f75;
 }
 
 footer {
