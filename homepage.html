@@ -44,7 +44,7 @@
                 
             </div>
             <div class="greetings">
-                <h1>Selamat Datang, <b>Username!</b></h1>
+                <h1>Selamat Datang, <b id="nama"></b>!</h1>
                 <h3>12 Oktober 2024</h3>
             </div>
         </section>
@@ -102,18 +102,45 @@
         <p>@2024 siBaper</p>
     </footer>
     <script>
-        // Check if the token exists in localStorage
+
         const token = localStorage.getItem('token');
+        const nama = localStorage.getItem('nama');
 
         if (!token) {
-            // No token, redirect to login page
-            window.location.href = 'login.html';
+            console.log('tidak ada token, akses ditolak!');
+            alert('tidak ada token')
+            window.location.href = 'index.html';
         } else {
-            // Optional: You can send a validation request to the server here
-            // If the token is valid, proceed with loading the homepage
-            console.log('Token found, user is authenticated');
-        }
+            console.log('Token ditekuman, Pengguna terautentikasi');
+            
+        fetch('http://localhost:8000/api/dosen', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('gagal mengambil data!');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User data:', data);
 
+            const namaUser = document.getElementById('nama');
+
+            if (namaUser && nama) {
+                namaUser.textContent = nama;
+            } else {
+                console.log('Nama tidak ditemukan');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        }
     </script>
 </body>
 </html>

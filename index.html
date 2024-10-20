@@ -33,7 +33,7 @@
             <form id="loginForm" method="post" enctype="multipart/form-data">
                 <div class="input-section">
                     <div class="username">
-                        <p>id</p>
+                        <p>NIP</p>
                         <input type="text" id="id" required>
                     </div>
         
@@ -59,7 +59,7 @@
             password: Password 
         };
 
-        console.log("trying to send request to URL...");
+        console.log("mencoba mengirim request ke URL...");
 
         try {
             const response = await fetch('http://localhost:8000/api/login', {
@@ -75,6 +75,7 @@
                 console.log('Success:', result);
 
                 const token = localStorage.setItem('token', result.data.token);
+                const name = localStorage.setItem('nama', result.data.nama)
                 window.location.href="homepage.html";
             } else {
                 console.log('HTTP error status:', response.status);
