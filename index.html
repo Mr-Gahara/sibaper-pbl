@@ -30,22 +30,56 @@
                 <img src="assets/logopolnep.jpg" alt="">
             </header>
 
-            <form action="homepage.html">
+            <form id="loginForm" method="post" enctype="multipart/form-data">
                 <div class="input-section">
                     <div class="username">
                         <p>username</p>
-                        <input type="text">
+                        <input type="text" id="username" required>
                     </div>
         
                     <div class="password">
                         <p>password</p>    
-                        <input type="password">
-                        <!-- <p>password minimal berisi 8 karakter</p> -->
+                        <input type="password" id="password" required>
+                        <p>password minimal berisi 8 karakter</p>
                     </div>
                 </div>
-                <button>Masuk</button>
+                <button type="submit" value="login">Masuk</button>
             </form>
         </section>
     </main>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const Username = document.getElementById('username').value;
+        const Password = document.getElementById('password').value;
+
+        const data = {
+            username: Username,
+            password: Password 
+        };
+
+        console.log("trying to send request to URL...");
+
+        try {
+            const response = await fetch('http://localhost:8000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            });
+            
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Success:', result);
+                window.location.href="homepage.html";
+            } else {
+                console.log('HTTP error status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error:', error); 
+        }});
+    </script>
 </body>
 </html>
