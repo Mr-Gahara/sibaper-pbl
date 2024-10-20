@@ -33,8 +33,8 @@
             <form id="loginForm" method="post" enctype="multipart/form-data">
                 <div class="input-section">
                     <div class="username">
-                        <p>username</p>
-                        <input type="text" id="username" required>
+                        <p>id</p>
+                        <input type="text" id="id" required>
                     </div>
         
                     <div class="password">
@@ -51,11 +51,11 @@
         document.getElementById('loginForm').addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        const Username = document.getElementById('username').value;
+        const id = document.getElementById('id').value;
         const Password = document.getElementById('password').value;
 
         const data = {
-            username: Username,
+            id: id,
             password: Password 
         };
 
@@ -73,6 +73,8 @@
             if (response.ok) {
                 const result = await response.json();
                 console.log('Success:', result);
+
+                const token = localStorage.setItem('token', result.data.token);
                 window.location.href="homepage.html";
             } else {
                 console.log('HTTP error status:', response.status);
