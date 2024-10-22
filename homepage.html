@@ -113,7 +113,7 @@
         } else {
             console.log('Token ditekuman, Pengguna terautentikasi');
             
-        fetch('http://localhost:8000/api/dosen', {
+        fetch('https://apiteam.v-project.my.id/api/login', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
