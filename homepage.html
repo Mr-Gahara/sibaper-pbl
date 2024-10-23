@@ -118,7 +118,7 @@
         } else {
             console.log('Token ditekuman, Pengguna terautentikasi');
             
-            fetch('https://apiteam.v-project.my.id/api/login', {
+            fetch('https://apiteam.v-project.my.id/api/user', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -151,7 +151,6 @@
             localStorage.clear();
             window.location.href='index.html';
         }
-        
     </script>
 </body>
 </html>
