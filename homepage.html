@@ -33,10 +33,11 @@
             <ul>
                 <li><a href="">Home</a></li>
                 <li><a href="histori.html">Histori</a></li>
-                <li><a href="index.html">Logout</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section class="banner">
             <img src="assets/polnep.jpg" alt="">
@@ -48,6 +49,7 @@
                 <h3>12 Oktober 2024</h3>
             </div>
         </section>
+
         <section class="section-info">
             <div class="text-info">
                 <h1>Informasi Mengajar:</h1>
@@ -59,6 +61,7 @@
 
             <img src="assets/icon.png" alt="">
         </section>
+
         <section class="section-task">
             <h1>Daftar Kelas:</h1>
 
@@ -98,9 +101,11 @@
             </div>
         </section>
     </main>
+
     <footer>
         <p>@2024 siBaper</p>
     </footer>
+
     <script>
 
         const token = localStorage.getItem('token');
@@ -113,34 +118,40 @@
         } else {
             console.log('Token ditekuman, Pengguna terautentikasi');
             
-        fetch('https://apiteam.v-project.my.id/api/login', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('gagal mengambil data!');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('User data:', data);
+            fetch('https://apiteam.v-project.my.id/api/login', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('gagal mengambil data!');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('User data:', data);
 
-            const namaUser = document.getElementById('nama');
+                const namaUser = document.getElementById('nama');
 
-            if (namaUser && nama) {
-                namaUser.textContent = nama;
-            } else {
-                console.log('Nama tidak ditemukan');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+                if (namaUser && nama) {
+                    namaUser.textContent = nama;
+                } else {
+                    console.log('Nama tidak ditemukan');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href='index.html';
+        }
+        
     </script>
 </body>
 </html>

@@ -47,6 +47,7 @@
 
             <img src="assets/icon.png" alt="">
         </section>
+
         <section class="section-task">
 
             <div class="info">
@@ -56,7 +57,7 @@
                 </div>
                 <div class="filter">
                     <select name="filter semester" id="">
-                        <option value="" disabled selected hidden>filter semester <p>▼</p></option>
+                        <option value="" disabled selected hidden>filter semester</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -65,7 +66,7 @@
                         <option value="6">6</option>
                     </select>
                     <select name="filter kelas" id="">
-                        <option value="" disabled selected hidden>filter kelas <p>▼</p></option>
+                        <option value="" disabled selected hidden>filter kelas</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -73,14 +74,14 @@
                         <option value="E">E</option>
                     </select>
                     <select name="filter dosen" id="">
-                        <option value="" disabled selected hidden>filter dosen <p>▼</p></option>
+                        <option value="" disabled selected hidden>filter dosen</option>
                         <option value="A">Safri Adam</option>
-                        <option value="B">Bang fey</option>
+                        <option value="B">Ferry Faisal</option>
                     </select>
                 </div>
             </div>
 
-            <table>
+            <table id="data-table">
                 <thead>
                     <tr>
                         <th>Pertemuan</th>
@@ -118,10 +119,58 @@
                     </tr>
                 </tbody>
             </table>
+
+            <button id="download-pdf">Cetak PDF</button>
         </section>
     </main>
     <footer>
         <p>@2024 siBaper</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+        document.getElementById("download-pdf").addEventListener("click", function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            doc.text("Histori Berita Perkuliahan", 10, 10);     
+            doc.autoTable({ html: "#data-table" });
+            doc.save("histori.pdf");
+        });
+
+
+        const token = localStorage.getItem('token');
+        const nama = localStorage.getItem('nama');
+
+        if (!token) {
+            console.log('tidak ada token, akses ditolak!');
+            alert('tidak ada token')
+            window.location.href = 'index.html';
+        } else {
+            console.log('Token ditekuman, Pengguna terautentikasi');
+            
+            fetch('https://apiteam.v-project.my.id/api/login', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('gagal mengambil data!');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('User data:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>
