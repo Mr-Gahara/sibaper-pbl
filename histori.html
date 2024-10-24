@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <header>
@@ -118,6 +121,20 @@
                     </tr>
                 </tbody>
             </table>
+            <br>
+            <button onlink="downloadPDF()">Cetak PDF</button>
+
+            <script>
+                function downloadPDF() {
+                    const{ jsPDF} = window.jspdf;
+                    const doc = new jsPDF();
+        
+                    doc.text('Histori Berita Perkuliahan:', 10, 10);
+                    doc.autoTable({html: '#historiTable'});
+                    
+                    doc.save('histori_perkuliahan.pdf');
+                }
+            </script>
         </section>
     </main>
     <footer>
