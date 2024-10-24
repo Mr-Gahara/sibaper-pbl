@@ -4,6 +4,7 @@ body {
     font-family: 'Inter', 'Arial';
     color: white;
 }
+
 header {
     position: fixed;
     background-color: #334EAC;
@@ -70,10 +71,6 @@ svg {
     display: none;
 }
 
-#check {
-    display: none;
-}
-
 .info {
     display: flex;
     width: 100%;
@@ -100,13 +97,10 @@ svg {
 
 .filter > select {
     padding: 3%;
-    border-style: none;
-    background-color: #1c2f75;
-    color: white;
     border-radius: 5px;
-    appearance: none;
-    -moz-appearance: none; /* Firefox */
-    -webkit-appearance: none; /* Safari and Chrome */
+    border-color: #142257;
+    color: #142257;
+    font-weight: 600;
 }
 
 .filter > select:hover {
@@ -120,6 +114,7 @@ table {
     border-radius: 10px;
     overflow: hidden;
     background-color: bisque;
+    margin: 5vh 0;
 }
 
 th {
@@ -140,6 +135,25 @@ table > thead {
 
 table tbody {
     background-color: rgb(214, 214, 214);
+}
+
+#check {
+    display: none;
+}
+
+button {
+    width: 100%;
+    padding: 1.25% 0;
+    border-style: none;
+    background-color: #1c2f75;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #142257;
 }
 
 .column-status {
@@ -214,6 +228,11 @@ footer {
     .section-task {
         margin: 7% 7%;
     }
+
+    button {
+        padding: 2% 0;
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 823px) {
@@ -251,9 +270,6 @@ footer {
     
     .filter > select {
         padding: 3%;
-        border-style: none;
-        background-color: #1c2f75;
-        color: white;
         border-radius: 5px;
         width: 100%;
         
@@ -301,6 +317,11 @@ footer {
     
     #check:checked ~ ul {
         right: 0;
+    }
+
+    button {
+        padding: 3% 0;
+        font-size: 8px;
     }
 }
 
