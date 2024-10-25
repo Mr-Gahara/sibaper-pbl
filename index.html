@@ -41,6 +41,8 @@
                         <p>password</p>    
                         <input type="password" id="password" required>
                         <p>password minimal berisi 8 karakter</p>
+                        
+                    <p id="errorMessage" style="color: red;"></div>
                     </div>
                 </div>
                 <button type="submit" value="login">Masuk</button>
@@ -79,6 +81,7 @@
                 window.location.href="homepage.html";
             } else {
                 console.log('HTTP error status:', response.status);
+                document.getElementById('errorMessage').textContent = 'NIP atau Password salah!';
             }
         } catch (error) {
             console.error('Error:', error); 
