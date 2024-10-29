@@ -74,7 +74,6 @@ svg {
 .info {
     display: flex;
     width: 100%;
-    gap: 70vh;
     margin: 5vh 0;
 }
 
@@ -92,11 +91,12 @@ svg {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 5vh;
 }
 
 .filter > select {
-    padding: 3%;
+    padding: 1.5%;
     border-radius: 5px;
     border-color: #142257;
     color: #142257;
@@ -135,6 +135,22 @@ table > thead {
 
 table tbody {
     background-color: rgb(214, 214, 214);
+}
+
+
+.status-notstarted {
+    background-color: #d3d3d3; 
+    color: #000000;
+}
+
+.status-onprocess {
+    background-color: #ffeb3b; 
+    color: #000000;
+}
+
+.status-completed {
+    background-color: #4caf50;
+    color: #fff;
 }
 
 #check {

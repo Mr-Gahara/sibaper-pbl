@@ -252,6 +252,8 @@ footer {
 }
 
 @media (max-width: 823px) {
+
+
     .banner {
         height: 30vh;
     }
@@ -298,7 +300,7 @@ footer {
     }
 
     .card {
-        gap: 5vh;
+        gap: 2vh;
         border-radius: 6px;
         padding: 3%;
     }

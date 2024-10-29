@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.log('Token ditemukan, Pengguna terautentikasi');
     
-        fetch('http://127.0.0.1:8000/api/sibaper/data/homepage', {
+        fetch('https://apiteam.v-project.my.id/api/sibaper/data/homepage', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
+            // console.log('User Data: ', data);
+            
             // ambil data nama dosen dari JSON
             const namaUser = document.getElementById('nama');
 
@@ -65,17 +67,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="card-info">
                         <p>Semester ${jadwal.jadwal.semester}</p>
                         <p>Kelas ${jadwal.jadwal.kelas.abjad_kelas}</p>
-                        <p>Pemrograman web</p>
+                        <p>${jadwal.jadwal.matkul.nama}</p>
                         <p>${jadwal.jadwal.start.slice(0, 5)} - ${jadwal.jadwal.finish.slice(0, 5)}</p>
                     </div>
                 `;
 
                 const button = document.createElement('button');
                 button.textContent = 'isi kelas';
-                button.onclick = () => window.location.href = 'formpage.html';
+                button.setAttribute('data-kode-matkul', jadwal.jadwal.matkul.kode_matkul);
+                button.onclick = () => {
+                    const kodeMatkul = button.getAttribute('data-kode-matkul');
+                    window.location.href = 'formpage.html';
+                    document.body.appendChild(button);
+                };
 
                 // validasi waktu untuk mengisi berita perkuliahan
-                if (currentTime > finishTime || currentTime < startTime) {
+                if (currentTime < startTime) {
                     button.disabled = true;
                     button.style.opacity = '0.5';
                     button.style.cursor = 'not-allowed';
@@ -84,11 +91,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.appendChild(button);
                 cardList.appendChild(card);
             });
+
+            // panggil fungsi
+            // resetInactivityTimer();
+            // document.addEventListener('mousemove', resetInactivityTimer);
+            // document.addEventListener('keypress', resetInactivityTimer);
+            // document.addEventListener('click', resetInactivityTimer);
         })
         .catch(error => {
             console.error('Error:', error);
         });
     }
+
+    // fungsi timer jika user afk
+    // function resetInactivityTimer() {
+    //     clearTimeout(inactivityTimeout);
+    //     inactivityTimeout = setTimeout(() => {
+    //         localStorage.removeItem('token');
+    //         alert('Anda telah logout otomatis karena tidak ada aktivitas selama 5 menit.');
+    //         window.location.href = 'index.html';
+    //     }, 300000);
+    // }
+
+    // window.addEventListener('beforeunload', () => {
+    //     localStorage.removeItem('token');
+    // });
 });
 
 function logout() {
