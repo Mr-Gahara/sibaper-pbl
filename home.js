@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
-            console.log('User Data: ', data);
-
             const currentTime = new Date(); // ambil waktu sekarang
             
             // ambil format tanggal sekarang

@@ -30,8 +30,6 @@ if (!token) {
         return response.json();
     })
     .then(data => {
-        console.log('User data:', data);
-
         const tableBody = document.querySelector('#data-table tbody');
         tableBody.innerHTML = '';
 
