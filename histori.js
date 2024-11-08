@@ -102,8 +102,43 @@ if (!token) {
     // window.addEventListener('beforeunload', () => {
     //     localStorage.removeItem('token');
     // });
+
+    fetch('https://apiteam.v-project.my.id/api/sibaper/data/rps', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Gagal mengambil data!');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('User data:', data);
+    })
+    
 }
 
+document.querySelector('select[name="filter-semester"]').addEventListener('change', filterData);
+document.querySelector('select[name="filter-kelas"]').addEventListener('change', filterData);
+
+function filterData() {
+    const semesterFilter = document.querySelector('select[name="filter semester"]').value;
+    const kelasFilter = document.querySelector('select[name="filter kelas"]').value;
+
+    // Filter data from the original dataset
+    const filteredData = window.historyData.filter(item => {
+        const semesterMatch = semesterFilter ? item.jadwal.semester == semesterFilter : true;
+        const kelasMatch = kelasFilter ? item.jadwal.kelas == kelasFilter : true;
+        return semesterMatch && kelasMatch;
+    });
+
+    // Display the filtered data
+    displayData(filteredData);
+}
 
 function logout() {
     localStorage.clear();

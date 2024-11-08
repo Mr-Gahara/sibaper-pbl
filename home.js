@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('token');
     const nama = localStorage.getItem('nama');
-    // const cardList = document.getElementById('card-list');
+    const namaUser = document.getElementById('nama');
+
+    if (namaUser && nama) {
+        namaUser.textContent = nama;
+    } else {
+        console.log('Nama tidak ditemukan');
+    }
 
     if (!token) {
         console.log('tidak ada token, akses ditolak!');
@@ -24,18 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
-            // console.log('User Data: ', data);
-            
-            // ambil data nama dosen dari JSON
-            const namaUser = document.getElementById('nama');
+            console.log('User Data: ', data);
 
-            if (namaUser && nama) {
-                namaUser.textContent = nama;
-            } else {
-                console.log('Nama tidak ditemukan');
-            }
-
-            currentTime = new Date(); // ambil waktu sekarang
+            const currentTime = new Date(); // ambil waktu sekarang
             
             // ambil format tanggal sekarang
             const hari = currentTime.getDate();
@@ -55,67 +52,63 @@ document.addEventListener('DOMContentLoaded', function () {
             const cardList = document.querySelector('.card-list');
             cardList.innerHTML = ''; 
 
-            // menampilkan card jadwal perkuliahan tiap kelas berdasarkan jadwal hari ini
-            data.data.forEach(jadwal => {
-                const startTime = new Date(`1970-01-01T${jadwal.jadwal.start}`);
-                const finishTime = new Date(`1970-01-01T${jadwal.jadwal.finish}`);
+            const infoParagraph = document.getElementById('info-mengajar');
 
-                const card = document.createElement('div');
-                card.classList.add('card');
 
-                card.innerHTML = `
-                    <div class="card-info">
-                        <p>Semester ${jadwal.jadwal.semester}</p>
-                        <p>Kelas ${jadwal.jadwal.kelas.abjad_kelas}</p>
-                        <p>${jadwal.jadwal.matkul.nama}</p>
-                        <p>${jadwal.jadwal.start.slice(0, 5)} - ${jadwal.jadwal.finish.slice(0, 5)}</p>
-                    </div>
-                `;
+            if (data.data && data.data.length > 0) {
 
-                const button = document.createElement('button');
-                button.textContent = 'isi kelas';
-                button.setAttribute('data-kode-matkul', jadwal.jadwal.matkul.kode_matkul);
-                button.onclick = () => {
-                    const kodeMatkul = button.getAttribute('data-kode-matkul');
-                    window.location.href = 'formpage.html';
-                    document.body.appendChild(button);
-                };
+                const kelasList = data.data.map(jadwal => `Kelas ${jadwal.abjad_kelas}`).join(' dan ');
 
-                // validasi waktu untuk mengisi berita perkuliahan
-                if (currentTime < startTime) {
-                    button.disabled = true;
-                    button.style.opacity = '0.5';
-                    button.style.cursor = 'not-allowed';
-                }
+                infoParagraph.textContent = `Anda hari ini memiliki kelas mengajar pada ${kelasList}. silahkan mengisi berita perkuliahan pada kelas yang tersedia.`;
 
-                card.appendChild(button);
-                cardList.appendChild(card);
-            });
+                // menampilkan card jadwal perkuliahan tiap kelas berdasarkan jadwal hari ini
+                data.data.forEach(jadwal => {
+                    const startTime = new Date(`1970-01-01T${jadwal.start}`);
+                    const finishTime = new Date(`1970-01-01T${jadwal.finish}`);
 
-            // panggil fungsi
-            // resetInactivityTimer();
-            // document.addEventListener('mousemove', resetInactivityTimer);
-            // document.addEventListener('keypress', resetInactivityTimer);
-            // document.addEventListener('click', resetInactivityTimer);
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    card.innerHTML = `
+                        <div class="card-info">
+                            <p>Kelas ${jadwal.abjad_kelas}</p>
+                            <p>${jadwal.nama_matkul}</p>
+                            <p>${jadwal.start.slice(0, 5)} - ${jadwal.finish.slice(0, 5)}</p>
+                        </div>
+                    `;
+
+                    const button = document.createElement('button');
+                    button.textContent = 'isi kelas';
+                    button.setAttribute('data-nama-matkul', jadwal.nama_matkul);
+                    button.setAttribute('data-kelas', jadwal.abjad_kelas);
+                    button.onclick = () => {
+                        const namaMatkul = button.getAttribute('data-nama-matkul');
+                        const kelas = button.getAttribute('data-kelas');
+
+                        localStorage.setItem('namaMatkul', namaMatkul);
+                        localStorage.setItem('kelas', kelas);
+
+                        window.location.href = 'formpage.html';
+                    };
+
+                    // validasi waktu untuk mengisi berita perkuliahan
+                    if (currentTime < startTime) {
+                        button.disabled = true;
+                        button.style.opacity = '0.5';
+                        button.style.cursor = 'not-allowed';
+                    }
+
+                    card.appendChild(button);
+                    cardList.appendChild(card);
+                });
+            } else {
+                infoParagraph.textContent = "Anda tidak memiliki jadwal mengajar pada hari ini.";
+            }
         })
         .catch(error => {
             console.error('Error:', error);
         });
     }
-
-    // fungsi timer jika user afk
-    // function resetInactivityTimer() {
-    //     clearTimeout(inactivityTimeout);
-    //     inactivityTimeout = setTimeout(() => {
-    //         localStorage.removeItem('token');
-    //         alert('Anda telah logout otomatis karena tidak ada aktivitas selama 5 menit.');
-    //         window.location.href = 'index.html';
-    //     }, 300000);
-    // }
-
-    // window.addEventListener('beforeunload', () => {
-    //     localStorage.removeItem('token');
-    // });
 });
 
 function logout() {

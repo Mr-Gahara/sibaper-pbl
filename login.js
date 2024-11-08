@@ -17,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(data), 
         });
         
         if (response.ok) {
@@ -25,7 +25,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             console.log('Success:', result);
 
             const token = localStorage.setItem('token', result.data.token);
-            const name = localStorage.setItem('nama', result.data.nama)
+            const name = localStorage.setItem('nama', result.data.nama);
+            
             window.location.href="homepage.html";
         } else {
             console.log('HTTP error status:', response.status);
